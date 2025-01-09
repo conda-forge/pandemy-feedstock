@@ -1,5 +1,8 @@
 {% set name = "Pandemy" %}
 {% set version = "1.2.0" %}
+{% set pyproject = load_file_data('pyproject.toml') %}
+{% set requires_python = pyproject.get('project', {}).get('requires-python', '') %}
+{% set python_min = requires_python|replace('>=', '') %}
 
 package:
   name: {{ name|lower }}
